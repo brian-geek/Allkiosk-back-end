@@ -40,7 +40,7 @@ sequelize
     JuryInfo.create({
       firstName: "Pace",
       lastName: "Ellsworth",
-      birthDate: "1990-5-15",
+      birthDate: "1987-4-21",
       jurorId: "paceme999",
       groupId: "tempe999",
     });
