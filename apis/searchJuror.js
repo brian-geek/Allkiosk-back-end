@@ -1,11 +1,14 @@
 const express = require("express");
 const Sequelize = require("sequelize");
 const router = express.Router();
+const config = require('../config.json');
+const jwt = require('jsonwebtoken');
 
 const initialJuryInfo = [
   {
     text: "6901028095884",
     firstName: "Pace",
+    middleName: 'M',
     lastName: "Ellsworth",
     birthDate: "1987-4-21",
     address: "Mesa AZ",
@@ -13,10 +16,14 @@ const initialJuryInfo = [
     jurorId: "paceme999",
     groupId: "tempe999",
     scheduleTime: "2020-5-27 10:10:42 AM",
+    nextReportDate: '2020-7-25',
+    poolRecordIsActive: true,
+    status: 'responded',
   },
   {
     text: "049000069150",
     firstName: "Taylor",
+    middleName: 'P',
     lastName: "Ellsworth",
     birthDate: "1990-2-21",
     address: "Mesa AZ",
@@ -24,10 +31,14 @@ const initialJuryInfo = [
     jurorId: "taylor999",
     groupId: "tempe999",
     scheduleTime: "2020-5-27 4:10:42 PM",
+    nextReportDate: '2020-7-6',
+    poolRecordIsActive: true,
+    status: 'panel',
   },
   {
     text: "350502692812985096",
     firstName: "Ned",
+    middleName: 'M',
     lastName: "Flanders",
     birthDate: "1980-12-1",
     address: "Tempe AZ",
@@ -35,10 +46,14 @@ const initialJuryInfo = [
     jurorId: "ned999",
     groupId: "tempe999",
     scheduleTime: "2020-7-21 9:40:00 AM",
+    nextReportDate: '2020-7-20',
+    poolRecordIsActive: true,
+    status: 'juror',
   },
   {
     text: "S19170520100037",
     firstName: "Sang",
+    middleName: 'S',
     lastName: "Luu",
     birthDate: "1985-5-11",
     address: "Phoenix AZ",
@@ -46,6 +61,9 @@ const initialJuryInfo = [
     jurorId: "sang999",
     groupId: "arizona999",
     scheduleTime: "2020-6-16 8:15:42 PM",
+    nextReportDate: '2020-8-1',
+    poolRecordIsActive: false,
+    status: 'summoned'
   },
 ];
 
@@ -70,6 +88,7 @@ const JuryInfo = sequelize.define(
   {
     text: Sequelize.STRING,
     firstName: Sequelize.STRING,
+    middleName: Sequelize.STRING,
     lastName: Sequelize.STRING,
     birthDate: Sequelize.DATEONLY,
     address: Sequelize.STRING,
@@ -77,6 +96,9 @@ const JuryInfo = sequelize.define(
     jurorId: Sequelize.STRING,
     groupId: Sequelize.STRING,
     scheduleTime: Sequelize.DATE,
+    poolRecordIsActive: Sequelize.BOOLEAN,
+    nextReportDate: Sequelize.DATEONLY,
+    status: Sequelize.STRING
   },
   {
     tableName: "jurorTable",
@@ -97,28 +119,24 @@ sequelize
 
 const handleJurorData = (req, res, next) => {
   if (req.body) {
-    const { firstName, lastName, birthDate, jurorId, groupId } = req.body;
+    const { firstName, lastName, birthDate, middleName } = req.body;
     JuryInfo.findOne({
       where: {
-        firstName: firstName,
-        lastName: lastName,
-        birthDate: birthDate,
-        jurorId: jurorId,
-        groupId: groupId,
+       firstName, lastName, middleName, birthDate   
       },
     }).then((result) => {
       if (result) {
         res.send({
           message: "Juror ID Found",
-          status: "success",
           jurorData: result,
+          status: 'success'
         });
       } else {
-        res.send({ message: "Juror ID Not Found", status: "failed" });
+        res.send({ message: "Juror ID Not Found", status: 'failed'});
       }
     });
   } else {
-    res.send({ message: "Error ocurred.", status: "failed" });
+    res.send({ message: "Error ocurred.", status: 'failed'});
   }
 };
 
@@ -132,12 +150,12 @@ const handleScannedData = (req, res, next) => {
     .then((result) => {
       if (result) {
         res.send({
-          message: "Bar Code Found",
+          message: "Juror ID Match Found.",
           status: "success",
-          jurorData: result,
+          token: jwt.sign({ result }, config.secret_config)
         });
       } else {
-        res.send({ message: "Bar Code Not Found", status: "failed" });
+        res.send({ message: "Juror ID Match Not Found. Enter Name and Date of Birth.", status: "failed" });
       }
     })
     .catch((err) => {

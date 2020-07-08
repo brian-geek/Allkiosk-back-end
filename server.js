@@ -8,16 +8,14 @@ const cors = require("cors");
 const errorHandler = require("./error-handler");
 const scanner = require("./apis/scanner");
 const searchJuror = require("./apis/searchJuror");
-// const crunchy_feedback = require('./feedback/crunchy_feedback');
-// const la_feedback = require('./feedback/la_feedback');
+const settings = require("./apis/settings");
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors());
-// app.use('/feedback/crunchy_cake', crunchy_feedback);
-// app.use('/feedback/la_locca', la_feedback);
 app.use("/scanner", scanner);
 app.use("/searchjuror", searchJuror);
+app.use("/settings", settings);
 
 app.use(errorHandler);
 server.listen(port, () => {
