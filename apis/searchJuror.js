@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const router = express.Router();
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
+const searchJurorFunc = require('../funcs/searchJurorFunc.js');
 
 const initialJuryInfo = [
   {
