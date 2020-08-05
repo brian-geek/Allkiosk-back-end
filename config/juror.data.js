@@ -13,7 +13,7 @@ const initialJuryInfo = [
     nextReportDate: new Date(),
     poolRecordIsActive: "Y",
     status: 2,
-    courtLocation: "Tempe Municipal Court 140 E 5th St, Temepe, AZ 85251",
+    courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
   },
   {
     text: "049000069",
@@ -29,7 +29,7 @@ const initialJuryInfo = [
     nextReportDate: "2020-08-06",
     poolRecordIsActive: "Y",
     status: 2,
-    courtLocation: "Tempe Municipal Court 140 E 5th St, Temepe, AZ 85251",
+    courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
   },
   {
     text: "350502692",
@@ -45,7 +45,7 @@ const initialJuryInfo = [
     nextReportDate: "2020-8-20",
     poolRecordIsActive: "Y", //possible values 'Y', 'N'
     status: 2, //possible values 1,2,3
-    courtLocation: "Tempe Municipal Court 140 E 5th St, Temepe, AZ 85251",
+    courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
   },
   {
     text: "123123123",
@@ -61,7 +61,7 @@ const initialJuryInfo = [
     nextReportDate: "2020-8-20",
     poolRecordIsActive: "Y", //possible values 'Y', 'N'
     status: 2,
-    courtLocation: "Tempe Municipal Court 140 E 5th St, Temepe, AZ 85251",
+    courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
   },
 ];
 
