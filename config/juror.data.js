@@ -14,6 +14,9 @@ const initialJuryInfo = [
     poolRecordIsActive: "Y",
     status: 2,
     courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
+    race: "other",
+    hispanic_ethnicity: null,
+    gender: null,
   },
   {
     text: "049000069",
@@ -30,6 +33,9 @@ const initialJuryInfo = [
     poolRecordIsActive: "Y",
     status: 2,
     courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
+    race: null,
+    hispanic_ethnicity: null,
+    gender: null,
   },
   {
     text: "350502692",
@@ -46,6 +52,9 @@ const initialJuryInfo = [
     poolRecordIsActive: "Y", //possible values 'Y', 'N'
     status: 2, //possible values 1,2,3
     courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
+    race: null,
+    hispanic_ethnicity: null,
+    gender: null,
   },
   {
     text: "123123123",
@@ -62,6 +71,9 @@ const initialJuryInfo = [
     poolRecordIsActive: "Y", //possible values 'Y', 'N'
     status: 2,
     courtLocation: "Tempe Municipal Court 140 E 5th St, Tempe, AZ 85251",
+    race: null,
+    hispanic_ethnicity: null,
+    gender: null,
   },
 ];
 

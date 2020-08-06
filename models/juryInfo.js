@@ -18,6 +18,9 @@ const JuryInfo = sequelize.define(
     nextReportDate: Sequelize.DATEONLY,
     status: Sequelize.INTEGER,
     courtLocation: Sequelize.STRING,
+    race: Sequelize.STRING,
+    hispanic_ethnicity: Sequelize.STRING,
+    gender: Sequelize.STRING,
   },
   {
     tableName: "jurorTable",

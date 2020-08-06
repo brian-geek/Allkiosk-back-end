@@ -82,3 +82,63 @@ exports.getUserInfo = async (req, res, next) => {
       res.status(402).send("Juror Info is invalid.");
     });
 };
+
+exports.updateUserInfo = async (req, res, next) => {
+  const { text } = res.locals;
+  const {
+    address,
+    birthDate,
+    courtLocation,
+    firstName,
+    gender,
+    groupId,
+    hispanic_ethnicity,
+    jurorId,
+    lastName,
+    middleName,
+    nextReportDate,
+    phone,
+    poolRecordIsActive,
+    race,
+    scheduleTime,
+    status,
+  } = req.body;
+  JuryInfo.update(
+    {
+      address,
+      birthDate,
+      courtLocation,
+      firstName,
+      gender,
+      groupId,
+      hispanic_ethnicity,
+      jurorId,
+      lastName,
+      middleName,
+      nextReportDate,
+      phone,
+      poolRecordIsActive,
+      race,
+      scheduleTime,
+      status,
+      text,
+    },
+    {
+      where: { text },
+    }
+  )
+    .then((result) => {
+      JuryInfo.findOne({
+        where: {
+          text,
+        },
+      })
+        .then((result) => res.status(200).send({ jurorData: result }))
+        .catch((err) => {
+          throw err;
+        });
+    })
+    .catch((err) => {
+      res.status(402).send(err);
+    });
+};
