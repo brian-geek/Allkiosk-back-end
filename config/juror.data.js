@@ -4,7 +4,7 @@ const initialJuryInfo = [
     firstName: "Pace",
     middleName: "M",
     lastName: "Ellsworth",
-    birthDate: "1987-4-21",
+    birthDate: null,
     address: "Mesa AZ",
     phone: "480-981-1616",
     jurorId: "paceme999",
@@ -17,6 +17,8 @@ const initialJuryInfo = [
     race: "other",
     hispanic_ethnicity: null,
     gender: null,
+    ssn: null,
+    parkingFee: 120,
   },
   {
     text: "049000069",
@@ -36,6 +38,8 @@ const initialJuryInfo = [
     race: null,
     hispanic_ethnicity: null,
     gender: null,
+    ssn: null,
+    parkingFee: 140,
   },
   {
     text: "350502692",
@@ -55,6 +59,8 @@ const initialJuryInfo = [
     race: null,
     hispanic_ethnicity: null,
     gender: null,
+    ssn: null,
+    parkingFee: 90,
   },
   {
     text: "123123123",
@@ -74,6 +80,8 @@ const initialJuryInfo = [
     race: null,
     hispanic_ethnicity: null,
     gender: null,
+    ssn: null,
+    parkingFee: 120,
   },
 ];
 

@@ -3,8 +3,6 @@ const moment = require("moment");
 const bcrypt = require("bcryptjs");
 const createToken = require("../helper/token.create");
 
-moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-
 const selectFindFunc = (req) => {
   const { text, firstName, middleName, lastName, birthDate } = req.body;
   console.log();
@@ -102,6 +100,8 @@ exports.updateUserInfo = async (req, res, next) => {
     race,
     scheduleTime,
     status,
+    ssn,
+    parkingFee,
   } = req.body;
   JuryInfo.update(
     {
@@ -122,6 +122,8 @@ exports.updateUserInfo = async (req, res, next) => {
       scheduleTime,
       status,
       text,
+      ssn,
+      parkingFee,
     },
     {
       where: { text },

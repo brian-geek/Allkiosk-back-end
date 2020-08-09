@@ -5,7 +5,7 @@ const key = require("../config/token.key.js");
 const verifyToken = (req, res, next) => {
   const { authorization } = req.headers;
   try {
-    if (authorization && authorization.split(" ")[0] === "Bearer") {
+    if (authorization && authorization.split(" ")[0] === "XKiosk") {
       const text = jwt.verify(authorization.split(" ")[1], key.secret);
       if (text !== undefined) {
         res.locals.text = text;

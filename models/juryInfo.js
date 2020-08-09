@@ -21,6 +21,8 @@ const JuryInfo = sequelize.define(
     race: Sequelize.STRING,
     hispanic_ethnicity: Sequelize.STRING,
     gender: Sequelize.STRING,
+    ssn: Sequelize.STRING,
+    parkingFee: Sequelize.FLOAT,
   },
   {
     tableName: "jurorTable",
